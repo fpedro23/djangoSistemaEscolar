@@ -8,7 +8,7 @@ class CircularForm(forms.ModelForm):
         model = Circular
         fields = '__all__'
 
-    enviarNotificacion = forms.BooleanField(label="Notificar Usuarios", initial=True)
+    enviarNotificacion = forms.BooleanField(label="Notificar Usuarios", initial=True, required=False)
 
     def save(self, commit=True):
         notification = self.cleaned_data.get('enviarNotificacion', None)
@@ -23,14 +23,14 @@ class AvisoForm(forms.ModelForm):
         model = Aviso
         fields = '__all__'
 
-    enviarNotificacion = forms.BooleanField(label="Notificar Usuarios", initial=True)
+    enviarNotificacion = forms.BooleanField(label="Notificar Usuarios", initial=True, required=False)
 
     def save(self, commit=True):
         notification = self.cleaned_data.get('enviarNotificacion', None)
         if notification:
             instance = super(AvisoForm, self).save(commit=False)
             print 'Send Notification'
-            print instance.titulo
+            ZeroPushHelper.sendBroadcastNotification('Nuevo Aviso', instance.titulo, instance.id, 'aviso')
         return super(AvisoForm, self).save(commit=commit)
 
 
@@ -39,12 +39,12 @@ class EventoForm(forms.ModelForm):
         model = Evento
         fields = '__all__'
 
-    enviarNotificacion = forms.BooleanField(label="Notificar Usuarios", initial=True)
+    enviarNotificacion = forms.BooleanField(label="Notificar Usuarios", initial=True, required=False)
 
     def save(self, commit=True):
         notification = self.cleaned_data.get('enviarNotificacion', None)
         if notification:
             instance = super(EventoForm, self).save(commit=False)
             print 'Send Notification'
-            print instance.titulo
+            ZeroPushHelper.sendBroadcastNotification('Nuevo Evento', instance.titulo, instance.id, 'evento')
         return super(EventoForm, self).save(commit=commit)

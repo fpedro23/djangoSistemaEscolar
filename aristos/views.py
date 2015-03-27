@@ -7,31 +7,41 @@ from aristos.models import *
 
 
 def circulares(request):
-    data = serializers.serialize('json', Circular.objects.all())
+    data = serializers.serialize('json',
+                                 Circular.objects.all(),
+                                 use_natural_keys=True,
+
+
+                                 )
     return HttpResponse(data, content_type='application/json')
 
 
 def avisos(request):
-    data = serializers.serialize('json', Aviso.objects.all())
+    data = serializers.serialize('json',
+                                 Aviso.objects.all(),
+                                 use_natural_keys=True,
+
+
+                                 )
     return HttpResponse(data, content_type='application/json')
 
 
 def eventos(request):
-    data = serializers.serialize('json', Evento.objects.all())
+    data = serializers.serialize('json', Evento.objects.all(), use_natural_keys=True)
     return HttpResponse(data, content_type='application/json')
 
 
 def detallecircular(request, id_element):
-    data = serializers.serialize('json', Circular.objects.filter(id=id_element))
+    data = serializers.serialize('json', Circular.objects.filter(id=id_element), use_natural_keys=True)
     return HttpResponse(data, content_type='application/json')
 
 
 def detalleaviso(request, id_element):
-    data = serializers.serialize('json', Aviso.objects.filter(id=id_element))
+    data = serializers.serialize('json', Aviso.objects.filter(id=id_element), use_natural_keys=True)
     return HttpResponse(data, content_type='application/json')
 
 
 def detalleevento(request, id_element):
-    data = serializers.serialize('json', Evento.objects.filter(id=id_element))
+    data = serializers.serialize('json', Evento.objects.filter(id=id_element), use_natural_keys=True)
     return HttpResponse(data, content_type='application/json')
 
