@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.contrib import admin
 from aristos.models import *
 from django.contrib.auth.admin import UserAdmin

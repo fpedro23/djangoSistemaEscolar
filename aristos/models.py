@@ -44,6 +44,9 @@ class Circular(models.Model):
     def __str__(self):
         return self.titulo
 
+    def __unicode__(self):
+        return self.titulo
+
 
 class Aviso(models.Model):
     titulo = models.CharField(max_length=200, help_text='Titulo de el aviso', verbose_name='Título')
@@ -54,6 +57,8 @@ class Aviso(models.Model):
     def __str__(self):
         return self.titulo
 
+    def __unicode__(self):
+        return self.titulo
 
 class Evento(models.Model):
     titulo = models.CharField(max_length=200, help_text='Titulo de el evento', verbose_name='Título')
@@ -63,4 +68,7 @@ class Evento(models.Model):
     remitente = models.ForeignKey(Area)
 
     def __str__(self):
+        return self.titulo
+
+    def __unicode__(self):
         return self.titulo

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django import forms
 from aristos.models import *
 from aristos import ZeroPushHelper
@@ -7,6 +8,7 @@ class CircularForm(forms.ModelForm):
     class Meta:
         model = Circular
         fields = '__all__'
+
 
     enviarNotificacion = forms.BooleanField(label="Notificar Usuarios", initial=True, required=False)
 
