@@ -1,14 +1,14 @@
-from django.conf.urls import patterns, include, url
-from django.contrib import admin
+from django.conf.urls import patterns, url, include
 from aristos import views
 
 
 
 urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^admin/', views.admin),
     url(r'^circulares/', views.circulares),
     url(r'^avisos/', views.avisos),
     url(r'^eventos/', views.eventos),
+    url(r'^authorize_token/', views.token),
 
     # ex: /aristos/circular/5/
     url(r'^circular/(?P<id_element>\d+)/$', views.detallecircular),
