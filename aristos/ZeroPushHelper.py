@@ -6,16 +6,23 @@ ANDROID_AUTH_KEY = "gcmdev_8MAgVC5GK9q2JPFQPyYu";
 
 
 import requests
+import json
+
 
 
 def sendBroadcastNotification(alert, message, id_circ, tipo):
-    data = "{\"idCircular\":" + str(id_circ) + ", \"tipo\":\"" + tipo + "\", \"titulo\":\"" + message + "\"}";
+    data = {
+        'idCircular': str(id_circ),
+        'tipo': tipo,
+        'titulo': message
+    }
+
 
     payload = {'auth_token': IOS_AUTH_KEY,
                'badge': '+1',
                'sound': ' ',
                'alert': alert + ': ' + message,
-               'info': data,
+               'info': json.dumps(data),
                'collapse_key': 'friend_request',
                'delay_while_idle': 'false',
                'time_to_live': '40320'
@@ -24,7 +31,7 @@ def sendBroadcastNotification(alert, message, id_circ, tipo):
     payloadAndroid = {
         'auth_token': ANDROID_AUTH_KEY,
         'data[alert]': alert,
-        'data[message]': data,
+        'data[message]': json.dumps(data),
         'collapse_key': 'friend_request',
         'delay_while_idle': 'false',
         'time_to_live': '40320'
@@ -39,6 +46,3 @@ def sendBroadcastNotification(alert, message, id_circ, tipo):
         BROADCAST_URL,
         payload
     )
-
-    print r.content
-    print s.content
