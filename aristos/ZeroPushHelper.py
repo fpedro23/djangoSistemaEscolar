@@ -1,19 +1,27 @@
 __author__ = 'pedrocontreras'
 ANDROID_AUTH_KEY = "gcmdev_8MAgVC5GK9q2JPFQPyYu";
 BROADCAST_URL = "https://api.zeropush.com/broadcast";
-IOS_AUTH_KEY = "iosdev_Rqohwid72sxjNEqkpszG";
+IOS_AUTH_KEY = "iosdev_vroTtM7EFNBsD6q9SUW6";
 
 import requests
 
-def sendBroadcastNotification(alert, message, id, tipo):
 
-    data = {
+def sendBroadcastNotification(alert, message, id_circ, tipo):
+    data = "{\"idCircular\":" + str(id_circ) + ", \"tipo\":\"" + tipo + "\", \"titulo\":\"" + message + "\"}";
 
-
+    payload = {'auth_token': IOS_AUTH_KEY,
+               'badge': '+1',
+               'sound': ' ',
+               'alert': alert + ': ' + message,
+               'info': data,
+               'collapse_key': 'friend_request',
+               'delay_while_idle': 'false',
+               'time_to_live': '40320'
     }
 
-    r = requests.post(BROADCAST_URL,)
-    print alert
-    print(message)
-    print(id)
-    print(tipo)
+    r = requests.post(
+        BROADCAST_URL,
+        payload
+    )
+
+    print r
