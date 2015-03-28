@@ -9,14 +9,12 @@ import requests
 import json
 
 
-
-def sendBroadcastNotification(alert, message, id_circ, tipo):
+def send_broadcast_notification(alert, message, id_circ, tipo):
     data = {
         'idCircular': str(id_circ),
         'tipo': tipo,
         'titulo': message
     }
-
 
     payload = {'auth_token': IOS_AUTH_KEY,
                'badge': '+1',
@@ -28,7 +26,7 @@ def sendBroadcastNotification(alert, message, id_circ, tipo):
                'time_to_live': '40320'
     }
 
-    payloadAndroid = {
+    payload_android = {
         'auth_token': ANDROID_AUTH_KEY,
         'data[alert]': alert,
         'data[message]': json.dumps(data),
@@ -37,12 +35,12 @@ def sendBroadcastNotification(alert, message, id_circ, tipo):
         'time_to_live': '40320'
     }
 
-    s = requests.post(
+    requests.post(
         BROADCAST_URL,
-        payloadAndroid
+        payload_android
     )
 
-    r = requests.post(
+    requests.post(
         BROADCAST_URL,
         payload
     )
