@@ -56,6 +56,7 @@ def token(request):
 # getAll and getById, depending on whether or not
 # it receives an id paramter through the request
 #
+#
 # Since each of these endpoints extendsProtectedResourceView
 # we will get a 403 (unauthorized) response unless
 # you provide a valid access token through the get request
