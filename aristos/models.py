@@ -17,6 +17,9 @@ class Area(models.Model):
     def __str__(self):
         return self.nombreArea
 
+    def __unicode__(self):
+        return self.nombreArea
+
     def natural_key(self):
         return self.nombreArea
 

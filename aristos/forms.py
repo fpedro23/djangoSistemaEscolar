@@ -16,7 +16,7 @@ class CircularForm(forms.ModelForm):
         notification = self.cleaned_data.get('enviarNotificacion', None)
         if notification:
             instance = super(CircularForm, self).save(commit=True)
-            ZeroPushHelper.sendBroadcastNotification('Nueva Circular', instance.titulo, instance.id, 'circular')
+            ZeroPushHelper.send_broadcast_notification('Nueva Circular', instance.titulo, instance.id, 'circular')
         return super(CircularForm, self).save(commit=commit)
 
 
@@ -32,7 +32,7 @@ class AvisoForm(forms.ModelForm):
         if notification:
             instance = super(AvisoForm, self).save(commit=False)
             print 'Send Notification'
-            ZeroPushHelper.sendBroadcastNotification('Nuevo Aviso', instance.titulo, instance.id, 'aviso')
+            ZeroPushHelper.send_broadcast_notification('Nuevo Aviso', instance.titulo, instance.id, 'aviso')
         return super(AvisoForm, self).save(commit=commit)
 
 
@@ -48,5 +48,5 @@ class EventoForm(forms.ModelForm):
         if notification:
             instance = super(EventoForm, self).save(commit=False)
             print 'Send Notification'
-            ZeroPushHelper.sendBroadcastNotification('Nuevo Evento', instance.titulo, instance.id, 'evento')
+            ZeroPushHelper.send_broadcast_notification('Nuevo Evento', instance.titulo, instance.id, 'evento')
         return super(EventoForm, self).save(commit=commit)

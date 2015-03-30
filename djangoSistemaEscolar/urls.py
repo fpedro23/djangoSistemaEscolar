@@ -10,5 +10,4 @@ urlpatterns = patterns('',
     url(r'^o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     url(r'^aristos/', include('aristos.urls')),
 
-
 )
