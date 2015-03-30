@@ -5,50 +5,6 @@ from oauth2_provider.views.generic import ProtectedResourceView
 
 
 # Create your views here.
-def circulares(request):
-    data = serializers.serialize('json',
-                                 Circular.objects.all(),
-                                 use_natural_keys=True,
-    )
-    return HttpResponse(data, content_type='application/json')
-
-
-def avisos(request):
-    data = serializers.serialize('json',
-                                 Aviso.objects.all(),
-                                 use_natural_keys=True,
-    )
-    return HttpResponse(data, content_type='application/json')
-
-
-def eventos(request):
-    data = serializers.serialize('json', Evento.objects.all(), use_natural_keys=True)
-    return HttpResponse(data, content_type='application/json')
-
-
-def detallecircular(request, id_element):
-    data = serializers.serialize('json', Circular.objects.filter(id=id_element), use_natural_keys=True)
-    return HttpResponse(data, content_type='application/json')
-
-
-def detalleaviso(request, id_element):
-    data = serializers.serialize('json', Aviso.objects.filter(id=id_element), use_natural_keys=True)
-    return HttpResponse(data, content_type='application/json')
-
-
-def detalleevento(request, id_element):
-    data = serializers.serialize('json', Evento.objects.filter(id=id_element), use_natural_keys=True)
-    return HttpResponse(data, content_type='application/json')
-
-
-def admin(request):
-    return HttpResponseRedirect('templates/admin/base.html')
-
-
-def token(request):
-    print request.GET
-    return HttpResponse('hello', content_type='text')
-
 
 # New implementation for the mobile API
 # There is now a ProtectedResourceView subclass

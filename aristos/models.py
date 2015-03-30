@@ -34,6 +34,9 @@ class Usuario(models.Model):
     def __str__(self):
         return self.area.nombreArea
 
+    def __unicode__(self):
+        return self.area.nombreArea
+
 
 class Circular(models.Model):
     titulo = models.CharField(max_length=200, help_text='Título de la circular', verbose_name='Título')
