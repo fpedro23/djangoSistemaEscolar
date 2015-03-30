@@ -2,13 +2,13 @@ __author__ = 'mng687'
 import requests
 import json
 
-SECRET = 'kjLlRgWc5lNIml00zjrxmssUvUeEAe4Rv5P3vI6aBG0DKVV8epU8Fxfo2mclYKVA03NahzqPdTZX0owOfotWckDm6UX6ub3KuHqfcNWlcvGAppJLZyiHz3xvKeYTrgWt'
+SECRET = 'qaDPVnEdTB;:lcXtsNN4Mb9zuSUc_HQ4;ZZ!qC-ZpWb4r8dpfkzzB0kosHHet@sDo5FW:YJc==CpPknC35L7;!cCly7JF7tao:_RsV9vkQDZoesdxV?5VLJN5?.2rD!;'
 
 payload = {
     'grant_type': 'password',
     'username': 'pedro',
     'password': 'pedro',
-    'client_id': 'rPGzzF1xtW4tBd5yG8tzJCZEncEK2e9wpewe4lNe',
+    'client_id': '?jrsf4IFEFE@3@;_aWWQyWm=NvUBVA.@dN!kcKwr',
     'client_secret': SECRET,
     'scope': 'write read'
 }
