@@ -1,7 +1,5 @@
-from django.conf.urls import patterns, url, include
+from django.conf.urls import patterns, url
 from aristos import views
-
-
 
 urlpatterns = patterns('',
     url(r'^admin/', views.admin),
@@ -9,6 +7,11 @@ urlpatterns = patterns('',
     url(r'^avisos/', views.avisos),
     url(r'^eventos/', views.eventos),
     url(r'^authorize_token/', views.token),
+
+    # Mappings for the new (protected) implementation of the mobile API
+    url(r'^api/circular', views.CircularEndpoint.as_view()),
+    url(r'^api/aviso', views.AvisoEndpoint.as_view()),
+    url(r'^api/evento', views.EventoEndpint.as_view()),
 
     # ex: /aristos/circular/5/
     url(r'^circular/(?P<id_element>\d+)/$', views.detallecircular),
