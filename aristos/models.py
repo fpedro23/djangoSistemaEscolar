@@ -41,7 +41,7 @@ class Usuario(models.Model):
 class Circular(models.Model):
     titulo = models.CharField(max_length=200, help_text='Título de la circular', verbose_name='Título')
     fechaPublicacion = models.DateField(verbose_name='Fecha de Publicación')
-    contenido = models.CharField(max_length=200)
+    contenido = models.TextField(blank=True, null=True)
     remitente = models.ForeignKey(Area)
 
     class Meta:
@@ -57,7 +57,7 @@ class Circular(models.Model):
 class Aviso(models.Model):
     titulo = models.CharField(max_length=200, help_text='Titulo de el aviso', verbose_name='Título')
     fechaPublicacion = models.DateField(verbose_name='Fecha de Publicación')
-    contenido = models.CharField(max_length=200)
+    contenido = models.TextField(blank=True, null=True)
     remitente = models.ForeignKey(Area)
 
     def __str__(self):
@@ -66,11 +66,12 @@ class Aviso(models.Model):
     def __unicode__(self):
         return self.titulo
 
+
 class Evento(models.Model):
     titulo = models.CharField(max_length=200, help_text='Titulo de el evento', verbose_name='Título')
     fechaInicio = models.DateTimeField(blank=True, null=True, verbose_name='Fecha de Inicio (HH:MM)', help_text='Fecha de Inicio del Evento')
     fechaFin = models.DateTimeField(blank=True, null=True, verbose_name='Fecha de Fin (HH:MM)', help_text='Fecha de Fin del Evento')
-    contenido = models.CharField(max_length=200)
+    contenido = models.TextField(blank=True, null=True)
     remitente = models.ForeignKey(Area)
 
     def __str__(self):
