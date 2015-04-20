@@ -33,6 +33,7 @@ class CircularAdmin(admin.ModelAdmin):
 
 class AvisoAdmin(admin.ModelAdmin):
     form = AvisoForm
+    list_display = ('titulo', 'remitente', 'fechaPublicacion')
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "remitente":
@@ -47,6 +48,7 @@ class AvisoAdmin(admin.ModelAdmin):
 
 class EventoAdmin(admin.ModelAdmin):
     form = EventoForm
+    list_display = ('titulo', 'remitente', 'fechaInicio', 'fechaFin')
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "remitente":
